@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michele Kamanga | Aspiring Software Engineer</title>
+  <meta name="description" content="Portfolio of Michele Kamanga, an IT student and aspiring software engineer who works in Python, Java, C++, C# and HTML/CSS.">
+  <meta name="theme-color" content="#3d3df5">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Bricolage Grotesque (headings) and Figtree (body), both from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!---<link rel="stylesheet" href="css/style.css">  -->
+  <style>
+
+    :root {
+  --paper: #eef0ff;
+  --paper-2: #e2e5fb;
+  --card: #ffffff;
+  --ink: #14123a;
+  --muted: #4d4a75;
+  --cobalt: #3d3df5;
+  --on-cobalt: #ffffff;
+  --sun: #ffc933;
+  --mint: #7be0b5;
+  --pink: #ff8fb1;
+  --line: var(--ink);
+  --shadow: 4px 4px 0 var(--ink);
+
+  --font-head: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+
+  --radius: 18px;
+  --wrap: 1120px;
+}
+
+:root[data-theme="dark"] {
+  --paper: #0f0e26;
+  --paper-2: #181640;
+  --card: #1c1a48;
+  --ink: #eceaff;
+  --muted: #b3b0dd;
+  --cobalt: #7a7aff;
+  --on-cobalt: #0f0e26;
+  --line: #eceaff;
+  --shadow: 4px 4px 0 #000;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background .25s ease, color .25s ease;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 .5em;
+}
+
+p { margin: 0 0 1em; max-width: 62ch; }
+a { color: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+:focus-visible {
+  outline: 3px solid var(--cobalt);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.wrap { width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto; }
+
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem;
+  background: var(--ink); color: var(--paper);
+  padding: .6rem 1rem; border-radius: 8px; z-index: 100;
+}
+.skip-link:focus { top: 1rem; }
+
+kbd {
+  font-family: var(--font-body);
+  font-size: .8em; font-weight: 700;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  padding: 0 .4em;
+  background: var(--card);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--paper);
+  border-bottom: 2px solid var(--line);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; min-height: 68px;
+}
+.logo { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+.logo-mark {
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--sun); color: #14123a;
+  border: 2px solid var(--line);
+  font-family: var(--font-head); font-weight: 800; font-size: .95rem;
+  transform: rotate(-8deg);
+  box-shadow: 2px 2px 0 var(--line);
+}
+.logo-text { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+
+.site-nav ul { display: flex; gap: .3rem; }
+.site-nav a {
+  display: block; padding: .45rem .9rem;
+  border-radius: 999px; text-decoration: none; font-weight: 600;
+  border: 2px solid transparent;
+}
+.site-nav a:hover { border-color: var(--line); }
+.site-nav a.is-current { background: var(--ink); color: var(--paper); }
+
+.header-actions { display: flex; gap: .6rem; }
+.icon-btn {
+  display: grid; place-items: center;
+  width: 44px; height: 44px;
+  border: 2px solid var(--line); border-radius: 50%;
+  background: var(--card); color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--line);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.icon-btn:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--line); }
+.icon-sun { display: none; }
+:root[data-theme="dark"] .icon-sun { display: block; }
+:root[data-theme="dark"] .icon-moon { display: none; }
+
+.nav-toggle { display: none; }
+.bars, .bars::before, .bars::after {
+  display: block; width: 18px; height: 2px; background: currentColor;
+  border-radius: 2px; transition: transform .2s ease, opacity .2s ease;
+}
+.bars { position: relative; }
+.bars::before, .bars::after { content: ""; position: absolute; left: 0; }
+.bars::before { top: -6px; }
+.bars::after { top: 6px; }
+.nav-toggle[aria-expanded="true"] .bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .bars::before { top: 0; transform: rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .bars::after { top: 0; transform: rotate(-45deg); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font: 700 1rem var(--font-body);
+  padding: .8rem 1.4rem;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none; cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--line); }
+.btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--line); }
+.btn-primary { background: var(--cobalt); color: var(--on-cobalt); }
+.btn-ghost { background: var(--card); color: var(--ink); }
+.btn-small { padding: .55rem 1.1rem; font-size: .95rem; background: var(--sun); color: #14123a; }
+.btn-small[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* ---------- Hero ---------- */
+.hero { padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 7vw, 6rem); }
+.hero-grid {
+  display: grid; grid-template-columns: 1.15fr .85fr;
+  gap: clamp(2rem, 5vw, 4rem); align-items: center;
+}
+.hero h1 {
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  font-weight: 800;
+  margin-bottom: .45em;
+}
+.greeting {
+  display: inline-block;
+  background: var(--sun); color: #14123a;
+  padding: 0 .22em;
+  border: 3px solid var(--line);
+  border-radius: 14px;
+  transform: rotate(-2deg);
+  box-shadow: 4px 4px 0 var(--line);
+}
+.greeting.swap { animation: pop .35s ease; }
+@keyframes pop {
+  0% { transform: rotate(-2deg) scale(.85); }
+  60% { transform: rotate(-3deg) scale(1.06); }
+  100% { transform: rotate(-2deg) scale(1); }
+}
+.hero-lead { font-size: 1.2rem; color: var(--muted); }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.6rem 0 1.4rem; }
+.hero-langs { font-size: .95rem; color: var(--muted); }
+
+/* Drum kit */
+.kit {
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: 28px;
+  padding: 1.5rem;
+  box-shadow: 8px 8px 0 var(--line);
+  transform: rotate(1.2deg);
+}
+.kit-title { font-size: 1.5rem; margin-bottom: .2em; }
+.kit-hint { font-size: .95rem; color: var(--muted); margin-bottom: 1.1rem; }
+.pads { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
+.pad {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem;
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  color: #14123a;
+  font: 800 1.1rem var(--font-head);
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--line), inset 0 0 0 7px rgba(255,255,255,.35);
+  transition: transform .06s ease, box-shadow .06s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.pad kbd { color: #14123a; background: rgba(255,255,255,.7); border-color: #14123a; }
+.pad-kick { background: var(--cobalt); color: #fff; }
+.pad-kick kbd { color: #14123a; }
+.pad-snare { background: var(--sun); }
+.pad-hat { background: var(--mint); }
+.pad-tom { background: var(--pink); }
+:root[data-theme="dark"] .pad-kick { color: #0f0e26; }
+.pad.hit {
+  transform: translate(4px, 4px) scale(.96);
+  box-shadow: 0 0 0 var(--line), inset 0 0 0 7px rgba(255,255,255,.6);
+}
+
+/* ---------- Sections ---------- */
+.section { padding: clamp(3rem, 7vw, 6rem) 0; }
+.section-tinted { background: var(--paper-2); border-block: 2px solid var(--line); }
+.section-title { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; }
+.section-intro { color: var(--muted); }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.about-side {
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  box-shadow: var(--shadow);
+  transform: rotate(-1deg);
+}
+.about-side h3 { font-size: 1.4rem; }
+.hobby-list { display: grid; gap: 1rem; }
+.hobby-list li { display: flex; gap: .8rem; align-items: flex-start; }
+.hobby-list div { line-height: 1.45; }
+.hobby-dot {
+  flex: none; width: 18px; height: 18px; margin-top: .3em;
+  border: 2px solid var(--line); border-radius: 50%;
+}
+.dot-blue { background: var(--cobalt); }
+.dot-yellow { background: var(--sun); }
+.dot-mint { background: var(--mint); }
+.dot-pink { background: var(--pink); }
+
+/* Skills */
+.skills-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; margin-top: 2rem;
+}
+.skill-group {
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.skill-group:nth-child(1) { border-radius: 30px 10px 30px 10px; }
+.skill-group:nth-child(2) { border-radius: 10px 30px 10px 30px; }
+.skill-group:nth-child(3) { border-radius: 10px 30px 10px 30px; }
+.skill-group:nth-child(4) { border-radius: 30px 10px 30px 10px; }
+.skill-group h3 { font-size: 1.3rem; margin-bottom: .8em; }
+.chips { display: flex; flex-wrap: wrap; gap: .55rem; }
+.chips li {
+  padding: .3rem .85rem;
+  border: 2px solid var(--line); border-radius: 999px;
+  font-weight: 600; font-size: .95rem;
+  background: var(--paper);
+}
+.skill-group:nth-child(1) .chips li:nth-child(odd) { background: var(--sun); color: #14123a; }
+.lang-list { display: grid; gap: .6rem; }
+.lang-list li {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: .5rem; border-bottom: 2px dashed var(--line);
+  font-weight: 600;
+}
+.lang-list li:last-child { border-bottom: 0; }
+.level {
+  font-size: .85rem; font-weight: 700;
+  padding: .1rem .7rem; border: 2px solid var(--line); border-radius: 999px;
+  background: var(--mint); color: #14123a;
+}
+.lang-list li:nth-child(n+3) .level { background: var(--pink); }
+
+/* Projects */
+.filters { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.4rem 0 2rem; }
+.filter {
+  font: 700 .95rem var(--font-body);
+  padding: .5rem 1.1rem;
+  border: 2px solid var(--line); border-radius: 999px;
+  background: var(--card); color: var(--ink); cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.filter:hover { background: var(--sun); color: #14123a; }
+.filter.is-active { background: var(--ink); color: var(--paper); }
+
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.5rem; }
+.project {
+  display: flex; flex-direction: column;
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.project[hidden] { display: none; }
+.project h3 { font-size: 1.35rem; }
+.project p { color: var(--muted); font-size: 1rem; flex: 1; }
+.project-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.tag {
+  font-size: .82rem; font-weight: 700;
+  padding: .1rem .7rem; border: 2px solid var(--line); border-radius: 999px;
+  color: #14123a;
+}
+.tag-python { background: var(--sun); }
+.tag-java { background: var(--pink); }
+.tag-web { background: var(--mint); }
+.tag-csharp { background: #b9b9ff; }
+.tag-banking { background: var(--sun); }
+.project-link {
+  align-self: flex-start;
+  font-weight: 700;
+  text-decoration: underline; text-decoration-thickness: 3px;
+  text-decoration-color: var(--cobalt); text-underline-offset: 4px;
+}
+.project-link:hover { background: var(--sun); color: #14123a; text-decoration-color: transparent; }
+.empty { margin-top: 1.5rem; font-weight: 600; }
+
+/* Journey */
+.journey-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.timeline { position: relative; margin-top: 2rem; padding-left: 2rem; border-left: 3px solid var(--line); }
+.timeline li { position: relative; padding-bottom: 2rem; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before {
+  content: ""; position: absolute; left: calc(-2rem - 11px); top: .35rem;
+  width: 19px; height: 19px; border-radius: 50%;
+  background: var(--sun); border: 3px solid var(--line);
+}
+.timeline li:first-child::before { background: var(--cobalt); }
+.timeline h3 { font-size: 1.3rem; margin-bottom: .15em; }
+.timeline .when { font-weight: 600; color: var(--cobalt); margin-bottom: .4em; }
+:root[data-theme="dark"] .timeline .when { color: var(--sun); }
+.timeline p:last-child { margin-bottom: 0; color: var(--muted); }
+.certs {
+  background: var(--card);
+  border: 3px solid var(--line); border-radius: var(--radius);
+  padding: 1.6rem; box-shadow: var(--shadow);
+  transform: rotate(1deg);
+  margin-top: 4.2rem;
+}
+.certs h3 { font-size: 1.4rem; }
+.certs li {
+  padding: .55rem 0 .55rem 1.9rem; position: relative;
+  border-bottom: 2px dashed var(--line); font-weight: 600;
+}
+.certs li:last-child { border-bottom: 0; }
+.certs li::before {
+  content: ""; position: absolute; left: 0; top: .95rem;
+  width: 16px; height: 9px;
+  border-left: 3px solid var(--cobalt); border-bottom: 3px solid var(--cobalt);
+  transform: rotate(-45deg);
+}
+:root[data-theme="dark"] .certs li::before { border-color: var(--mint); }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.contact-links { display: grid; gap: .6rem; margin-top: 1.5rem; }
+.contact-links a {
+  font-weight: 700; font-size: 1.1rem;
+  text-decoration: underline; text-decoration-thickness: 3px;
+  text-decoration-color: var(--cobalt); text-underline-offset: 4px;
+  word-break: break-word;
+}
+.contact-links a:hover { background: var(--sun); color: #14123a; }
+
+.form {
+  background: var(--card);
+  border: 3px solid var(--line); border-radius: 28px;
+  padding: 1.8rem; box-shadow: 8px 8px 0 var(--line);
+}
+.field { margin-bottom: 1.1rem; }
+.field label { display: block; font-weight: 700; margin-bottom: .35rem; }
+.field input, .field textarea {
+  width: 100%;
+  font: inherit; color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--line); border-radius: 12px;
+  padding: .7rem .9rem;
+}
+.field textarea { resize: vertical; min-height: 130px; }
+.field input:focus, .field textarea:focus { outline: 3px solid var(--cobalt); outline-offset: 2px; }
+.field.has-error input, .field.has-error textarea { border-color: #d6204a; background: rgba(214, 32, 74, .07); }
+.error { min-height: 1.2em; margin: .3rem 0 0; font-size: .9rem; font-weight: 600; color: #c2183f; }
+:root[data-theme="dark"] .error { color: #ff8fa8; }
+.form-status { margin: 1rem 0 0; font-weight: 700; }
+
+/* Footer */
+.site-footer { border-top: 2px solid var(--line); padding: 1.6rem 0; font-size: .95rem; }
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .8rem; }
+.footer-inner p { margin: 0; }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+  .hero-grid, .about-grid, .journey-grid, .contact-grid { grid-template-columns: 1fr; }
+  .kit { max-width: 460px; }
+  .certs { margin-top: 0; }
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 760px) {
+  .nav-toggle { display: grid; }
+  .site-nav {
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: var(--paper);
+    border-bottom: 2px solid var(--line);
+    padding: 0 1.25rem;
+    max-height: 0; overflow: hidden;
+    visibility: hidden;
+    transition: max-height .3s ease, visibility .3s;
+  }
+  .site-nav.is-open { max-height: 400px; visibility: visible; padding-block: .8rem 1.2rem; }
+  .site-nav ul { flex-direction: column; gap: .2rem; }
+  .site-nav a { padding: .8rem 1rem; font-size: 1.1rem; }
+  .logo-text { font-size: 1rem; }
+}
+
+@media (max-width: 420px) {
+  body { font-size: 1rem; }
+  .kit { padding: 1.1rem; }
+  .pads { gap: .75rem; }
+  .pad { font-size: .95rem; }
+  .hero-buttons .btn { width: 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="#home" aria-label="Michele Kamanga, back to top">
+        <span class="logo-mark" aria-hidden="true">MK</span>
+        <span class="logo-text">Michele Kamanga</span>
+      </a>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z" fill="currentColor"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
+        </button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span class="bars" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HOME -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title">
+            <span id="greeting" class="greeting" aria-live="off">Hello</span>, I'm Michele Kamanga.
+          </h1>
+          <p class="hero-lead">
+            I'm an IT student who wants to be a software engineer. I like taking a problem apart, finding what's broken and fixing it.
+            Away from the screen you'll find me drawing, cooking, or behind a drum kit.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#projects">See my projects</a>
+            <a class="btn btn-ghost" href="#contact">Say hello</a>
+          </div>
+          <p class="hero-langs">I speak English and French, and I'm learning Spanish and Turkish.</p>
+        </div>
+
+        <div class="kit" aria-labelledby="kit-title">
+          <h2 id="kit-title" class="kit-title">Give the drums a go</h2>
+          <p class="kit-hint">Tap a pad, or press <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd> on your keyboard.</p>
+          <div class="pads">
+            <button class="pad pad-kick" type="button" data-sound="kick" data-key="a" aria-label="Kick drum, key A"><span>Kick</span><kbd>A</kbd></button>
+            <button class="pad pad-snare" type="button" data-sound="snare" data-key="s" aria-label="Snare drum, key S"><span>Snare</span><kbd>S</kbd></button>
+            <button class="pad pad-hat" type="button" data-sound="hat" data-key="d" aria-label="Hi-hat, key D"><span>Hi-hat</span><kbd>D</kbd></button>
+            <button class="pad pad-tom" type="button" data-sound="tom" data-key="f" aria-label="Tom drum, key F"><span>Tom</span><kbd>F</kbd></button>
+          </div>
+          <button id="beat-toggle" class="btn btn-small" type="button" aria-pressed="false">Play a beat</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="wrap about-grid">
+        <div>
+          <h2 id="about-title" class="section-title">A bit about me</h2>
+          <p>
+            I'm a second-year IT student at Gauteng City College, working towards a career in software engineering.
+            I'm comfortable in several programming languages and I pick up new tools quickly. What keeps me going is solving problems,
+            learning something new every week, and helping other people along the way.
+          </p>
+        </div>
+
+        <aside class="about-side" aria-label="Outside of code">
+          <h3>Outside of code</h3>
+          <ul class="hobby-list">
+            <li><span class="hobby-dot dot-blue" aria-hidden="true"></span><div><strong>Drums.</strong> Rhythm is maths you can dance to.</div></li>
+            <li><span class="hobby-dot dot-yellow" aria-hidden="true"></span><div><strong>Drawing.</strong> Where a lot of my interface ideas start.</div></li>
+            <li><span class="hobby-dot dot-pink" aria-hidden="true"></span><div><strong>UX/UI design.</strong> I like making things that are easy to use.</div></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section section-tinted" aria-labelledby="skills-title">
+      <div class="wrap">
+        <h2 id="skills-title" class="section-title">What I work with</h2>
+
+        <div class="skills-grid">
+          <article class="skill-group">
+            <h3>Programming</h3>
+            <ul class="chips">
+              <li>Java</li>
+              <li>C++</li>
+              <li>C#</li>
+              <li>HTML &amp; CSS</li>
+              <li>JavaScript</li>
+            </ul>
+          </article>
+
+          <article class="skill-group">
+            <h3>Design and security</h3>
+            <ul class="chips">
+              <li>UX/UI fundamentals</li>
+              <li>Data science foundations</li>
+              <li>Cybersecurity basics</li>
+            </ul>
+          </article>
+
+          <article class="skill-group">
+            <h3>How I work</h3>
+            <ul class="chips">
+              <li>Problem solving</li>
+              <li>Troubleshooting</li>
+              <li>Teamwork</li>
+              <li>Time management</li>
+              <li>Fast learner</li>
+              <li>Computer literacy</li>
+            </ul>
+          </article>
+
+          <article class="skill-group">
+            <h3>Languages I speak</h3>
+            <ul class="lang-list">
+              <li><span>English</span><span class="level">Fluent</span></li>
+              <li><span>French</span><span class="level">Fluent</span></li>
+              <li><span>Spanish</span><span class="level">Beginner</span></li>
+              <li><span>Turkish</span><span class="level">Beginner</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="wrap">
+        <h2 id="projects-title" class="section-title">Things I've built</h2>
+        <p class="section-intro">Pick a topic to filter. Each project links to its code on GitHub.</p>
+
+        <div class="filters" role="group" aria-label="Filter projects by topic">
+          <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-filter="web" aria-pressed="false">Web</button>
+          <button class="filter" type="button" data-filter="csharp" aria-pressed="false">C#</button>
+          <button class="filter" type="button" data-filter="java" aria-pressed="false">Java</button>
+          <button class="filter" type="button" data-filter="banking" aria-pressed="false">Banking</button>
+        </div>
+
+        <div class="project-grid" id="project-grid">
+
+          <article class="project" data-category="web">
+            <div class="project-tags"><span class="tag tag-web">Web</span></div>
+            <h3>To-do list</h3>
+            <p>A simple to-do list that lets you add tasks and delete the ones you added by mistake. Built with HTML, CSS and JavaScript.</p>
+            <a class="project-link" href="https://github.com/genmahub/todo-list" target="_blank" rel="noopener">View on GitHub</a>
+          </article>
+
+          <article class="project" data-category="csharp">
+            <div class="project-tags"><span class="tag tag-csharp">C#</span></div>
+            <h3>Temperature calculator</h3>
+            <p>A temperature calculation in C#, with small practice programs on variables, strings and maths operations.</p>
+            <a class="project-link" href="https://github.com/genmahub/temp-cal" target="_blank" rel="noopener">View on GitHub</a>
+          </article>
+
+          <article class="project" data-category="java">
+            <div class="project-tags"><span class="tag tag-java">Java</span></div>
+            <h3>GUI use</h3>
+            <p>My first example of a graphical user interface, written in Java.</p>
+            <a class="project-link" href="https://github.com/genmahub/GUI-use" target="_blank" rel="noopener">View on GitHub</a>
+          </article>
+
+          <article class="project" data-category="banking">
+            <div class="project-tags"><span class="tag tag-banking">Banking</span></div>
+            <h3>Banking system simulator</h3>
+            <p>A banking system simulator that works with banking details.</p>
+            <a class="project-link" href="https://github.com/genmahub/Banking-sysmen" target="_blank" rel="noopener">View on GitHub</a>
+          </article>
+
+          <article class="project" data-category="java banking">
+            <div class="project-tags"><span class="tag tag-java">Java</span><span class="tag tag-banking">Banking</span></div>
+            <h3>Banking systems</h3>
+            <p>A simple banking system in Java, with a SQL file for the database side.</p>
+            <a class="project-link" href="https://github.com/genmahub/banking_systems" target="_blank" rel="noopener">View on GitHub</a>
+          </article>
+
+        </div>
+        <p id="no-projects" class="empty" hidden>Nothing here yet. Choose another topic to see more projects.</p>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section id="journey" class="section section-tinted" aria-labelledby="journey-title">
+      <div class="wrap journey-grid">
+        <div>
+          <h2 id="journey-title" class="section-title">My journey so far</h2>
+          <ol class="timeline">
+            <li>
+              <h3>Information Technology: System Development</h3>
+              <p class="when">Gauteng City College, second year (now)</p>
+              <p>Studying web development and programming, and building projects like this portfolio.</p>
+            </li>
+          </ol>
+        </div>
+
+        <aside class="certs" aria-labelledby="certs-title">
+          <h3 id="certs-title">Certificates</h3>
+          <ul>
+            <li>Introduction to Programming</li>
+            <li>Data Science</li>
+            <li>Data Science Foundations</li>
+            <li>Junior Cybersecurity Analyst</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div>
+          <h2 id="contact-title" class="section-title">Let's talk</h2>
+          <p>
+            I'm looking for a junior developer role or an internship where I can learn from a team and contribute from day one.
+            Send me a message and I'll get back to you.
+          </p>
+          <ul class="contact-links">
+            <li><a href="mailto:kamangamichele@gmail.com">kamangamichele@gmail.com</a></li>
+            <li><a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/YOUR-PROFILE" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+
+        <form id="contact-form" class="form" novalidate>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+            <p class="error" id="name-error" role="alert"></p>
+          </div>
+          <div class="field">
+            <label for="email">Your email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+            <p class="error" id="email-error" role="alert"></p>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+            <p class="error" id="message-error" role="alert"></p>
+          </div>
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p id="form-status" class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>&copy; <span id="year">2026</span> Michele Kamanga. Built by hand with HTML, CSS and JavaScript.</p>
+      <a href="#home">Back to top</a>
+    </div>
+  </footer>
+
+  <script>
+
+    (function () {
+  "use strict";
+
+  var root = document.documentElement;
+
+  /* ---------- 1. Theme toggle (remembers your choice) ---------- */
+  var themeBtn = document.getElementById("theme-toggle");
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    themeBtn.setAttribute(
+      "aria-label",
+      theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+    );
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem("theme"); } catch (e) { /* storage blocked */ }
+  var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(saved || (prefersDark ? "dark" : "light"));
+
+  themeBtn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(next);
+    try { localStorage.setItem("theme", next); } catch (e) { /* ignore */ }
+  });
+
+  /* ---------- 2. Mobile navigation toggle ---------- */
+  var navBtn = document.getElementById("nav-toggle");
+  var nav = document.getElementById("site-nav");
+
+  function setNav(open) {
+    nav.classList.toggle("is-open", open);
+    navBtn.setAttribute("aria-expanded", String(open));
+    navBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+
+  navBtn.addEventListener("click", function () {
+    setNav(navBtn.getAttribute("aria-expanded") !== "true");
+  });
+  nav.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") setNav(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") setNav(false);
+  });
+
+  /* ---------- 3. Rotating greeting (the languages I speak) ---------- */
+  var greeting = document.getElementById("greeting");
+  var hellos = ["Hello", "Bonjour", "Hola", "Merhaba"];
+  var helloIndex = 0;
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduceMotion) {
+    setInterval(function () {
+      helloIndex = (helloIndex + 1) % hellos.length;
+      greeting.textContent = hellos[helloIndex];
+      greeting.classList.remove("swap");
+      void greeting.offsetWidth; // restart the animation
+      greeting.classList.add("swap");
+    }, 2200);
+  }
+
+  /* ---------- 4. Drum kit (sounds are synthesised, no audio files) ---------- */
+  var audioCtx = null;
+  var noiseBuffer = null;
+
+  function getCtx() {
+    if (!audioCtx) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      audioCtx = new AC();
+      // one second of white noise, reused for snare and hi-hat
+      noiseBuffer = audioCtx.createBuffer(1, audioCtx.sampleRate, audioCtx.sampleRate);
+      var data = noiseBuffer.getChannelData(0);
+      for (var i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+    }
+    if (audioCtx.state === "suspended") audioCtx.resume();
+    return audioCtx;
+  }
+
+  function noise(ctx, filterType, freq, length, volume) {
+    var src = ctx.createBufferSource();
+    src.buffer = noiseBuffer;
+    var filter = ctx.createBiquadFilter();
+    filter.type = filterType;
+    filter.frequency.value = freq;
+    var gain = ctx.createGain();
+    var t = ctx.currentTime;
+    gain.gain.setValueAtTime(volume, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + length);
+    src.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+    src.start(t); src.stop(t + length);
+  }
+
+  function tone(ctx, type, startFreq, endFreq, length, volume) {
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    var t = ctx.currentTime;
+    osc.type = type;
+    osc.frequency.setValueAtTime(startFreq, t);
+    osc.frequency.exponentialRampToValueAtTime(endFreq, t + length);
+    gain.gain.setValueAtTime(volume, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + length);
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(t); osc.stop(t + length);
+  }
+
+  var sounds = {
+    kick:  function (c) { tone(c, "sine", 150, 40, 0.45, 1); },
+    snare: function (c) { noise(c, "highpass", 1500, 0.2, 0.7); tone(c, "triangle", 210, 140, 0.12, 0.5); },
+    hat:   function (c) { noise(c, "highpass", 7500, 0.07, 0.45); },
+    tom:   function (c) { tone(c, "sine", 220, 100, 0.35, 0.9); }
+  };
+
+  var pads = document.querySelectorAll(".pad");
+  var padByKey = {};
+
+  function play(name) {
+    var ctx = getCtx();
+    if (ctx && sounds[name]) sounds[name](ctx);
+    var pad = document.querySelector('.pad[data-sound="' + name + '"]');
+    if (pad) {
+      pad.classList.add("hit");
+      setTimeout(function () { pad.classList.remove("hit"); }, 110);
+    }
+  }
+
+  pads.forEach(function (pad) {
+    padByKey[pad.dataset.key] = pad.dataset.sound;
+    pad.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      play(pad.dataset.sound);
+    });
+    // Keyboard activation (Enter / Space) on the focused button
+    pad.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); play(pad.dataset.sound); }
+    });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+    var tag = (document.activeElement && document.activeElement.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA") return; // don't drum while typing
+    var name = padByKey[e.key.toLowerCase()];
+    if (name) play(name);
+  });
+
+  // A simple 8-step groove: kick, hi-hat and snare
+  var beatBtn = document.getElementById("beat-toggle");
+  var groove = [
+    ["kick", "hat"], ["hat"], ["snare", "hat"], ["hat"],
+    ["kick", "hat"], ["kick", "hat"], ["snare", "hat"], ["hat", "tom"]
+  ];
+  var beatTimer = null;
+  var step = 0;
+
+  function stopBeat() {
+    clearInterval(beatTimer);
+    beatTimer = null;
+    beatBtn.textContent = "Play a beat";
+    beatBtn.setAttribute("aria-pressed", "false");
+  }
+
+  beatBtn.addEventListener("click", function () {
+    if (beatTimer) { stopBeat(); return; }
+    step = 0;
+    beatBtn.textContent = "Stop the beat";
+    beatBtn.setAttribute("aria-pressed", "true");
+    beatTimer = setInterval(function () {
+      groove[step].forEach(play);
+      step = (step + 1) % groove.length;
+    }, 300);
+  });
+
+  /* ---------- 5. Project filter ---------- */
+  var filters = document.querySelectorAll(".filter");
+  var projects = document.querySelectorAll(".project");
+  var emptyMsg = document.getElementById("no-projects");
+
+  filters.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var wanted = btn.dataset.filter;
+      var shown = 0;
+
+      filters.forEach(function (b) {
+        var active = b === btn;
+        b.classList.toggle("is-active", active);
+        b.setAttribute("aria-pressed", String(active));
+      });
+
+      projects.forEach(function (card) {
+        var cats = card.dataset.category.split(" ");
+        var match = wanted === "all" || cats.indexOf(wanted) !== -1;
+        card.hidden = !match;
+        if (match) shown++;
+      });
+
+      emptyMsg.hidden = shown !== 0;
+    });
+  });
+
+  /* ---------- 6. Contact form validation ---------- */
+  var form = document.getElementById("contact-form");
+  var status = document.getElementById("form-status");
+  var EMAIL_TO = "kamangamichele@gmail.com";
+
+  function setError(input, message) {
+    var field = input.closest(".field");
+    field.classList.toggle("has-error", Boolean(message));
+    document.getElementById(input.id + "-error").textContent = message;
+    input.setAttribute("aria-invalid", message ? "true" : "false");
+  }
+
+  function validate(input) {
+    var value = input.value.trim();
+    var msg = "";
+    if (input.id === "name") {
+      if (value.length < 2) msg = "Enter your name (at least 2 characters).";
+    } else if (input.id === "email") {
+      if (!value) msg = "Enter your email address.";
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) msg = "That email doesn't look right. Try name@example.com.";
+    } else if (input.id === "message") {
+      if (value.length < 10) msg = "Write a message of at least 10 characters.";
+    }
+    setError(input, msg);
+    return !msg;
+  }
+
+  var inputs = form.querySelectorAll("input, textarea");
+  inputs.forEach(function (input) {
+    input.addEventListener("blur", function () { validate(input); });
+    input.addEventListener("input", function () {
+      if (input.closest(".field").classList.contains("has-error")) validate(input);
+    });
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    status.textContent = "";
+    var allGood = true;
+    var firstBad = null;
+
+    inputs.forEach(function (input) {
+      if (!validate(input)) {
+        allGood = false;
+        if (!firstBad) firstBad = input;
+      }
+    });
+
+    if (!allGood) {
+      firstBad.focus();
+      status.textContent = "Fix the highlighted fields and try again.";
+      return;
+    }
+
+    // No server needed: open the visitor's email app with the message filled in.
+    var name = form.elements.name.value.trim();
+    var email = form.elements.email.value.trim();
+    var message = form.elements.message.value.trim();
+    var subject = encodeURIComponent("Portfolio message from " + name);
+    var body = encodeURIComponent(message + "\n\nFrom: " + name + " (" + email + ")");
+
+    status.textContent = "Thanks, " + name + "! Opening your email app to send this.";
+    window.location.href = "mailto:" + EMAIL_TO + "?subject=" + subject + "&body=" + body;
+    form.reset();
+  });
+
+  /* ---------- 7. Highlight the nav link for the section in view ---------- */
+  var links = document.querySelectorAll(".site-nav a");
+  var sections = [];
+  links.forEach(function (a) {
+    var s = document.querySelector(a.getAttribute("href"));
+    if (s) sections.push({ link: a, el: s });
+  });
+
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (l) { l.classList.remove("is-current"); l.removeAttribute("aria-current"); });
+        var match = sections.filter(function (s) { return s.el === entry.target; })[0];
+        if (match) { match.link.classList.add("is-current"); match.link.setAttribute("aria-current", "true"); }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    sections.forEach(function (s) { observer.observe(s.el); });
+  }
+
+  /* ---------- 8. Footer year ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+})();
+
+  </script>
+</body>
+</html>
